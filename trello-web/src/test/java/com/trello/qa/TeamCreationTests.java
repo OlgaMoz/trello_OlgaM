@@ -7,16 +7,8 @@ import org.testng.annotations.Test;
 public class TeamCreationTests  extends TestBase{
     @Test
     public void testTeamCreation() {
+        System.out.println("isUserLoggedIn()"+ isUserLoggedIn());
         Assert.assertTrue(isUserLoggedIn());
-    }
-
-    public boolean isUserLoggedIn() {
-      //  return isElementPresent(By.cssSelector("[data-test-id='header-member-menu-button']"));
-        return isElementPresent(By.xpath("//a[@aria-label='Back to Home']"));
-    }
-
-    public boolean isElementPresent(By locator) {
-        return driver.findElements(locator).size()>0;
     }
 
 }

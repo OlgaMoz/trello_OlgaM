@@ -39,11 +39,26 @@ public class TestBase {
     }
 
     public void openSite(String url) {
+
         driver.get(url);
     }
 
+    public boolean isElementPresent(By locator) {
+
+        return driver.findElements(locator).size()>0;
+    }
+
+    public boolean isUserLoggedIn() {
+        return isElementPresent(By.cssSelector("[data-test-id='header-member-menu-button']"));
+    }
+
+    public boolean isBoardCreated() {
+        return isElementPresent(By.cssSelector("[class='primary mod-list-add-button js-save-edit']"));
+    }
+
     @AfterClass
-    public void tearDown(String url) {
+    public void tearDown() {
+
         driver.quit();
     }
 
