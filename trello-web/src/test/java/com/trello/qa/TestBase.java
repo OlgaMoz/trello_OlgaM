@@ -62,4 +62,33 @@ public class TestBase {
         driver.quit();
     }
 
+    public void clickContinueButton() {
+        click(By.cssSelector("[type='submit']"));
+    }
+
+    public void fillTeamCreationForm(String teamName, String description) {
+        type(By.cssSelector("[data-test-id='header-create-team-name-input']"), teamName);
+        type(By.cssSelector("textarea"), description);
+    }
+
+    public void selectCreateTeamFromDropDoun() {
+        click(By.cssSelector("[data-test-id='header-create-team-button']"));
+    }
+
+    public void clickOnPlusButtonOnHeader() {
+    click(By.cssSelector("[data-test-id='header-create-menu-button']"));
+    }
+
+    public void confirmBoardCreation() {
+        click(By.cssSelector("[class='primary']"));
+    }
+
+    public void fillBoardCreationForm(String boardName, String s) {
+
+        type(By.cssSelector("[class='subtle-input']"), boardName);
+        if (isElementPresent(By.cssSelector("[class='icon-sm icon-down subtle-chooser-trigger-dropdown-icon light']"))) {
+            click(By.cssSelector("[class='icon-sm icon-down subtle-chooser-trigger-dropdown-icon light']"));
+            click(By.xpath("//*[@class='pop-over-list org-chooser']//li[1]"));//no team
+        }
+    }
 }
