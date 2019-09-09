@@ -17,7 +17,9 @@ public class TestBase {
      driver.manage().window().maximize();
 
      openSite("https://trello.com");
-     login("oemozel@gmail.com","Anna2018");
+
+     //login("elena.telran@yahoo.com", "12345.com");
+    login("oemozel@gmail.com","Anna2018");
     }
 
     public void login(String email, String password) {
@@ -71,7 +73,7 @@ public class TestBase {
         type(By.cssSelector("textarea"), description);
     }
 
-    public void selectCreateTeamFromDropDoun() {
+    public void selectCreateTeamFromDropDown() {
         click(By.cssSelector("[data-test-id='header-create-team-button']"));
     }
 
@@ -90,5 +92,30 @@ public class TestBase {
             click(By.cssSelector("[class='icon-sm icon-down subtle-chooser-trigger-dropdown-icon light']"));
             click(By.xpath("//*[@class='pop-over-list org-chooser']//li[1]"));//no team
         }
+    }
+
+    public String getBoardNameFromBoardPage() {
+      return driver.findElement(By.xpath("//span[@class='js-board-editing-target board-header-btn-text']")).getText();
+       }
+
+    public String getTeamNameFromTeamPage() {
+      return driver.findElement(By.cssSelector("h1")).getText();
+    }
+
+    public int getTeamsCount() {
+        return driver.findElements(By.xpath("//*[@class='_mtkwfAlvk6O3f']/../../..//li")).size();
+    }
+
+    public void returnToHomePage() throws InterruptedException {
+        Thread.sleep(10000);
+        click(By.cssSelector("a[href='/']"));
+    }
+
+    public void clickOnPlusButtonOnLeftNavMenu() {
+        click((By.cssSelector(".icon-add.icon-sm")));
+    }
+
+    public void clickOnTheButtonCreateNewBoardInTheCenter() {
+      click(By.cssSelector("[class='board-tile mod-add']"));
     }
 }
